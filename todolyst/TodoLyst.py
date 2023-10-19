@@ -1,10 +1,45 @@
 from dataclasses import dataclass
 from enum import Enum
 import datetime
+
 from typing import Dict
 
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
+
+# logger conf:
+# 2 timedrotatingfilehandlers: meaning we create 1 file per day and
+# rotate through the last 31 files. (31 so that we get a full month,
+# even on long months)
+# the first prints everything down to debug level
+# the second only prints critical and error levels
+
+# debug formatter: precise format, down to the
+# filename, function name and line number
+debug_formatter = logging.Formatter(
+    '%(asctime)s | %(levelname)-8s | %(filename)s.%(funcName)s l.%(lineno)d | %(message)s')
+debug_file_handler = TimedRotatingFileHandler(
+    filename="debug.log", when='midnight', backupCount=31)
+debug_file_handler.setFormatter(debug_formatter)
+debug_file_handler.setLevel(logging.DEBUG)
+
+error_file_handler = TimedRotatingFileHandler(
+    filename="error.log", when='midnight', backupCount=31)
+# error formatter: only the time, module name, logging level and message
+error_formatter = logging.Formatter(
+    '%(asctime)s | %(name)s |  %(levelname)s: %(message)s')
+error_file_handler.setFormatter(error_formatter)
+error_file_handler.setLevel(logging.ERROR)
+
+logger = logging.getLogger("TodoLyst")
+logger.setLevel(logging.DEBUG)
+logger.addHandler(debug_file_handler)
+logger.addHandler(error_file_handler)
 
 # The states that can be taken by a task
+
+
 class TaskState(Enum):
     todo = 0
     in_progress = 1
@@ -34,6 +69,7 @@ class _Task:
     category: str
     # Create a new task, description can be null and other attributes are not managed by user
     def __init__(self, title:str,description:str=None,category="Default") -> None:
+
         """_summary_
 
         Args:
@@ -46,10 +82,12 @@ class _Task:
         self.state = TaskState.todo
         self.description = description
 
+
         if(category not in Categories):
             raise Exception("The category you entered is not part of the available categories, here are the current categories : "+str(Categories)+". If you want to add a new category, use the AddCategory method")
         Categories.add(category)
         self.category = category
+
 
 
         self.id = _max_id
@@ -70,11 +108,13 @@ class _Task:
     def display(self):
         """_summary_
         """
+
         print("Task :", self.id)
         print("Title :", self.title)
         print("State :", self.state.name)
         print("Description :", self.description)
-        print("Created on :", self.creationdate.date(),"at", str(self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute))
+        print("Created on : ", self.creationdate.date(), "at", str(
+            self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute))
         print("Category :",self.category)
 
 
@@ -149,8 +189,7 @@ class TaskList:
             print("--------")
 
 
-
-
+logger.info("Starting tasklist...")
 testlist = TaskList()
 testlist.add_task("test", "description1",category="Work")
 testlist.add_task("test2", "description1",category="Personal")
@@ -164,5 +203,7 @@ testlist.display_tasks()
 #testlist.remove_tasks_by_ids(0)
 testlist.complete_task("test")
 testlist.begin_task("test3")
+logger.info("Tasklist ended.")
+logger.error("Done.")
 
 testlist.display_tasks(category="Work")
