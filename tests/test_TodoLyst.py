@@ -1,8 +1,8 @@
 
-from todolyst import TodoLyst
-
+from todolyst import TodoLyst,TodolystExceptions
+from todolyst.TodolystExceptions import DuplicateTaskException
 # Tests for TaskList
-
+import pytest
 
 def test_add_task():
     '''Checks that adding a task increments the length of the task list by 1'''
@@ -10,6 +10,17 @@ def test_add_task():
     initial_length = len(task_list.tasks)
     task_list.add_task("Testtask02")
     assert len(task_list.tasks) == initial_length + 1
+
+def test_add_duplicate_task():
+    '''Checks that adding a task of same title raises an exception'''
+    task_list_exceptions = TodoLyst.TaskList()
+    initial_length = len(task_list_exceptions.tasks)
+    task_list_exceptions.add_task("Testtask02")
+
+    with pytest.raises(DuplicateTaskException):
+        #raise DuplicateTaskException('zefez')  
+        task_list_exceptions.add_task("Testtask02")
+
 
 
 def test_remove_task_by_title():
@@ -30,7 +41,7 @@ def test_remove_task_by_id():
     task_list.add_task("Testtask04")
     initial_length = len(task_list.tasks)
 
-    task_list.remove_tasks_by_ids(0)
+    task_list.remove_tasks_by_ids(TodoLyst._max_id-1)
     assert len(task_list.tasks) == initial_length - 1
 
 

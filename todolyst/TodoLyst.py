@@ -117,7 +117,7 @@ class TaskList:
     tasks: Dict[int, _Task] = {}
 
     def __init__(self) -> None:
-        pass
+        self.tasks = {}
 
     def add_task(self, title: str, description: str = None, category: str = "Default"):
         """_summary_
@@ -204,3 +204,8 @@ logger.info("Tasklist ended.")
 logger.error("Done.")
 print(test_task)
 testlist.display_tasks(category="Work")
+
+
+task_list_exceptions = TaskList()
+initial_length = len(task_list_exceptions.tasks)
+task_list_exceptions.add_task("Testtask02")
