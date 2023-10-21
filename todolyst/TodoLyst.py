@@ -7,7 +7,7 @@ from typing import Dict
 import logging
 from logging.handlers import TimedRotatingFileHandler
 
-from TodolystExceptions import *
+import TodolystExceptions
 
 
 # logger conf:
@@ -87,7 +87,7 @@ class _Task:
         self.description = description
 
         if (category not in Categories):
-            raise CategoryNotFoundException("The category you entered is not part of the available categories, here are the current categories : " +
+            raise TodolystExceptions.CategoryNotFoundException("The category you entered is not part of the available categories, here are the current categories : " +
                             str(Categories)+". If you want to add a new category, use the AddCategory method")
         Categories.add(category)
         self.category = category
@@ -129,8 +129,7 @@ class TaskList:
         same_tasks = [task for task in self.tasks.values()
                       if task.title == title]
         if (len(same_tasks) > 0):
-            raise DuplicateTaskException(
-                "Error, can't have two tasks with the same title in a taskList.\n")
+            raise TodolystExceptions.DuplicateTaskException()
         newTask = _Task(title, description=description, category=category)
         self.tasks[newTask.id] = newTask
 
@@ -152,7 +151,7 @@ class TaskList:
         """
         ids_to_remove = [id for id in self.tasks.keys() if id in ids]
         if (len(ids_to_remove) < len(ids)):
-            raise TaskNotFoundException(
+            raise TodolystExceptions.TaskNotFoundException(
                 "One or several ids of tasks to be removed do not correspond to ids from this list.")
 
         for id in ids_to_remove:
@@ -175,7 +174,7 @@ class TaskList:
 
         if (category):
             if (category not in Categories):
-                raise CategoryNotFoundException(
+                raise TodolystExceptions.CategoryNotFoundException(
                     "Tried to filter using a category that does not exist : "+category)
             tasks = [task for task in self.tasks.values()
                      if task.category == category]
@@ -186,6 +185,7 @@ class TaskList:
             print("--------")
 
 
+'''
 logger.info("Starting tasklist...")
 testlist = TaskList()
 testlist.add_task("test", "description1", category="Work")
@@ -209,3 +209,4 @@ testlist.display_tasks(category="Work")
 task_list_exceptions = TaskList()
 initial_length = len(task_list_exceptions.tasks)
 task_list_exceptions.add_task("Testtask02")
+'''
