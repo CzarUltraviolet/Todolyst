@@ -74,11 +74,15 @@ class _Task:
     # Create a new task, description can be null and other attributes are not managed by user
 
     def __init__(self, title: str, description: str = None, category="Default") -> None:
-        """_summary_
+        """Creates a new Task
 
         Args:
-            title (_type_): _description_
-            description (_type_, optional): _description_. Defaults to None.
+            title (str): title of the task
+            description (str, optional): description of the task Defaults to None.
+            category (str, optional): category of the task. Defaults to "Default".
+
+        Raises:
+            TodolystExceptions.CategoryNotFoundException: raised if input category doesn't exist
         """
         global _max_id
         global Categories
@@ -99,15 +103,20 @@ class _Task:
 
     # Set task state
     def set_state(self, new_state: TaskState):
-        """_summary_
+        """set the state of the task
 
         Args:
-            new_state (TaskState): _description_
+            new_state (TaskState): new state
         """
         self.state = new_state
 
     
     def __str__(self):
+        """Show what the task should be displayed like
+
+        Returns:
+            str: str detailing all characteristics of the task
+        """
         return "Task : " + str(self.id)+"\n"+"Title : " +self.title+"\n"+"Description : "+self.description+"\n"+"Created on : "+ str(self.creationdate.date())+ " at "  +str(
             self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute)+"\n"+"Category : "+ self.category+"\n"
 
@@ -120,11 +129,15 @@ class TaskList:
         self.tasks = {}
 
     def add_task(self, title: str, description: str = None, category: str = "Default"):
-        """_summary_
+        """Creates a new Task and adds it to the list
 
         Args:
-            title (str): _description_
-            description (_type_, optional): _description_. Defaults to None.
+            title (str): title of the new task
+            description (str, optional): description of the new task. Defaults to None.
+            category (str, optional): category of the new task. Defaults to "Default".
+
+        Raises:
+            TodolystExceptions.DuplicateTaskException: raised if a similar task already exists
         """
         same_tasks = [task for task in self.tasks.values()
                       if task.title == title]
@@ -134,20 +147,20 @@ class TaskList:
         self.tasks[newTask.id] = newTask
 
     def remove_tasks_by_titles(self, *titles: str):
-        """_summary_
+        """removes all tasks by title
 
         Args:
-            titles (_type_): _description_
+            titles (string[]): titles of the tasks to be removed
         """
         tasks = [task for task in self.tasks.values() if task.title in titles]
         for task in tasks:
             self.tasks.pop(task.id)
 
     def remove_tasks_by_ids(self, *ids: int):
-        """_summary_
+        """removes all tasks by id
 
-        Args:
-            titles (_type_): _description_
+        Raises:
+            TodolystExceptions.TaskNotFoundException: raised if a task can't be found in the current list
         """
         ids_to_remove = [id for id in self.tasks.keys() if id in ids]
         if (len(ids_to_remove) < len(ids)):
@@ -158,17 +171,29 @@ class TaskList:
             self.tasks.pop(id)
 
     def begin_task(self, *titles: str):
+        """Sets the state of the tasks to TaskState.in_progress
+        """
         tasks = [task for task in self.tasks.values() if task.title in titles]
         for task in tasks:
             task.set_state(TaskState.in_progress)
 
     def complete_task(self, *titles: str):
+        """Sets the state of the tasks to TaskState.complete
+        """
         tasks = [task for task in self.tasks.values() if task.title in titles]
         for task in tasks:
             task.set_state(TaskState.complete)
 
     # Display taks from the list, can be filtered to display only a certain category
     def display_tasks(self, category: str = None):
+        """Displays all tasks in current list with the possibility to filter by category
+
+        Args:
+            category (str, optional): If category is set, only tasks of this particular category will be shown. Defaults to None.
+
+        Raises:
+            TodolystExceptions.CategoryNotFoundException: Is raised if a category is set but does not exist
+        """
         print("Task list contains ", len(self.tasks), " elements.")
         print("--------")
 

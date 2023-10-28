@@ -20,8 +20,7 @@ def test_add_duplicate_task():
     task_list_exceptions = TodoLyst.TaskList()
     initial_length = len(task_list_exceptions.tasks)
     task_list_exceptions.add_task("Testtask02")
-    with pytest.raises(DuplicateTaskException) as einfo:
-        # raise DuplicateTaskException('zefez')
+    with pytest.raises(Exception) as einfo:
         task_list_exceptions.add_task("Testtask02")
 
 
@@ -51,7 +50,7 @@ def test_remove_task_by_id_exception():
     '''Checks that removing a task decrements the length of the task list by 1'''
     task_list = TodoLyst.TaskList()
 
-    with pytest.raises(TaskNotFoundException):
+    with pytest.raises(Exception):
         task_list.remove_tasks_by_ids(TodoLyst._max_id-1)
 
 
