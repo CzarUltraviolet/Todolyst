@@ -26,14 +26,14 @@ mylist = TaskList()
 ```
 
 ### Add tasks
-```
+```py
 mylist.add_task("first task","description for first task")
 # You can add a task in a particular category
 mylist.add_task("first task","description for first task",category="Work")
 ```
 
 ### Change task state
-```
+```py
 mylist.begin_task("first task")
 mylist.complete("first_task")
 # You can change the state of several tasks at once
@@ -41,7 +41,7 @@ mylist.complete("third_task","fourth_task")
 ```
 
 ### Display tasks
-```
+```py
 mylist.display_tasks()
 # Display by categories
 mylist.display_tasks(category="Work")
@@ -49,7 +49,7 @@ mylist.display_tasks(category="Work")
 
 ### Add custom  category
 Default available categories are Default", "Work", "Personal". You can add a custom category using the following function.
-```
+```py
 add_category
 ```
 
