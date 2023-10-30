@@ -21,7 +21,7 @@ A complete description of the assignement (in French) can be found at: https://e
 This package follows a simple structure, you manipulate lists (TaskList) of tasks (_Task).
 
 ### Create a new list
-```
+```py
 mylist = TaskList()
 ```
 
