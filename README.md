@@ -50,7 +50,7 @@ mylist.display_tasks(category="Work")
 ### Add custom  category
 Default available categories are Default", "Work", "Personal". You can add a custom category using the following function.
 ```py
-add_category
+add_category("mycategory")
 ```
 
 
