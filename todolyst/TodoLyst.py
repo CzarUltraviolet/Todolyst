@@ -153,6 +153,11 @@ class TaskList:
             titles (string[]): titles of the tasks to be removed
         """
         tasks = [task for task in self.tasks.values() if task.title in titles]
+
+        if (len(tasks) < len(titles)):
+            raise TodolystExceptions.TaskNotFoundException(
+                "One or several ids of tasks to be removed do not correspond to ids from this list.")
+        
         for task in tasks:
             self.tasks.pop(task.id)
 
