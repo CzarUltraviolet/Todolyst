@@ -1,0 +1,419 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+
+    <!-- Generated with Sphinx 7.2.6 and Furo 2023.09.10 -->
+        <title>todolyst package - Todolyst 0.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=135e06be" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=36a5483c" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  --color-brand-primary: black;
+  --color-brand-content: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: white;
+  --color-brand-content: white;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  --color-brand-primary: white;
+  --color-brand-content: white;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Todolyst 0.2 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo only-light" src="../_static/Logo-Télécom-Paris-IP-Paris_light.png" alt="Light Logo"/>
+    <img class="sidebar-logo only-dark" src="../_static/Logo-Télécom-Paris-IP-Paris_dark.png" alt="Dark Logo"/>
+  </div>
+  
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="todolyst-package">
+<h1>todolyst package<a class="headerlink" href="#todolyst-package" title="Link to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">#</a></h2>
+</section>
+<section id="module-todolyst.TodoLyst">
+<span id="todolyst-todolyst-module"></span><h2>todolyst.TodoLyst module<a class="headerlink" href="#module-todolyst.TodoLyst" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodoLyst.</span></span><span class="sig-name descname"><span class="pre">TaskList</span></span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.add_task">
+<span class="sig-name descname"><span class="pre">add_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Default'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.add_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.add_task" title="Link to this definition">#</a></dt>
+<dd><p>Creates a new Task and adds it to the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – title of the new task</p></li>
+<li><p><strong>description</strong> (<em>str</em><em>, </em><em>optional</em>) – description of the new task. Defaults to None.</p></li>
+<li><p><strong>category</strong> (<em>str</em><em>, </em><em>optional</em>) – category of the new task. Defaults to “Default”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#todolyst.TodolystExceptions.DuplicateTaskException" title="todolyst.TodolystExceptions.DuplicateTaskException"><strong>TodolystExceptions.DuplicateTaskException</strong></a> – raised if a similar task already exists</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.begin_task">
+<span class="sig-name descname"><span class="pre">begin_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.begin_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.begin_task" title="Link to this definition">#</a></dt>
+<dd><p>Sets the state of the tasks to TaskState.in_progress</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.complete_task">
+<span class="sig-name descname"><span class="pre">complete_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.complete_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.complete_task" title="Link to this definition">#</a></dt>
+<dd><p>Sets the state of the tasks to TaskState.complete</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.display_tasks">
+<span class="sig-name descname"><span class="pre">display_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.display_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.display_tasks" title="Link to this definition">#</a></dt>
+<dd><p>Displays all tasks in current list with the possibility to filter by category</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>category</strong> (<em>str</em><em>, </em><em>optional</em>) – If category is set, only tasks of this particular category will be shown. Defaults to None.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#todolyst.TodolystExceptions.CategoryNotFoundException" title="todolyst.TodolystExceptions.CategoryNotFoundException"><strong>TodolystExceptions.CategoryNotFoundException</strong></a> – Is raised if a category is set but does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.remove_tasks_by_ids">
+<span class="sig-name descname"><span class="pre">remove_tasks_by_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.remove_tasks_by_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.remove_tasks_by_ids" title="Link to this definition">#</a></dt>
+<dd><p>removes all tasks by id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#todolyst.TodolystExceptions.TaskNotFoundException" title="todolyst.TodolystExceptions.TaskNotFoundException"><strong>TodolystExceptions.TaskNotFoundException</strong></a> – raised if a task can’t be found in the current list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.remove_tasks_by_titles">
+<span class="sig-name descname"><span class="pre">remove_tasks_by_titles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.remove_tasks_by_titles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.remove_tasks_by_titles" title="Link to this definition">#</a></dt>
+<dd><p>removes all tasks by title</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>titles</strong> (<em>string</em><em>[</em><em>]</em>) – titles of the tasks to be removed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">_Task</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskList.tasks" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodoLyst.</span></span><span class="sig-name descname"><span class="pre">TaskState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskState" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState.complete">
+<span class="sig-name descname"><span class="pre">complete</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskState.complete" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState.in_progress">
+<span class="sig-name descname"><span class="pre">in_progress</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskState.in_progress" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState.todo">
+<span class="sig-name descname"><span class="pre">todo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskState.todo" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.add_category">
+<span class="sig-prename descclassname"><span class="pre">todolyst.TodoLyst.</span></span><span class="sig-name descname"><span class="pre">add_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#add_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.add_category" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-todolyst.TodolystExceptions">
+<span id="todolyst-todolystexceptions-module"></span><h2>todolyst.TodolystExceptions module<a class="headerlink" href="#module-todolyst.TodolystExceptions" title="Link to this heading">#</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="todolyst.TodolystExceptions.CategoryNotFoundException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodolystExceptions.</span></span><span class="sig-name descname"><span class="pre">CategoryNotFoundException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodolystExceptions.html#CategoryNotFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodolystExceptions.CategoryNotFoundException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="todolyst.TodolystExceptions.DuplicateTaskException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodolystExceptions.</span></span><span class="sig-name descname"><span class="pre">DuplicateTaskException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&quot;Error,</span> <span class="pre">can't</span> <span class="pre">have</span> <span class="pre">two</span> <span class="pre">tasks</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">title</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">taskList.\n&quot;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodolystExceptions.html#DuplicateTaskException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodolystExceptions.DuplicateTaskException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="todolyst.TodolystExceptions.TaskNotFoundException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodolystExceptions.</span></span><span class="sig-name descname"><span class="pre">TaskNotFoundException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodolystExceptions.html#TaskNotFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodolystExceptions.TaskNotFoundException" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-todolyst">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-todolyst" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2023, Frédéric_Lauron Pascal_Mahé Yannick_Letort Pierre_DLVM
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">todolyst package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-todolyst.TodoLyst">todolyst.TodoLyst module</a><ul>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList"><code class="docutils literal notranslate"><span class="pre">TaskList</span></code></a><ul>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.add_task"><code class="docutils literal notranslate"><span class="pre">TaskList.add_task()</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.begin_task"><code class="docutils literal notranslate"><span class="pre">TaskList.begin_task()</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.complete_task"><code class="docutils literal notranslate"><span class="pre">TaskList.complete_task()</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.display_tasks"><code class="docutils literal notranslate"><span class="pre">TaskList.display_tasks()</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.remove_tasks_by_ids"><code class="docutils literal notranslate"><span class="pre">TaskList.remove_tasks_by_ids()</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.remove_tasks_by_titles"><code class="docutils literal notranslate"><span class="pre">TaskList.remove_tasks_by_titles()</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskList.tasks"><code class="docutils literal notranslate"><span class="pre">TaskList.tasks</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskState"><code class="docutils literal notranslate"><span class="pre">TaskState</span></code></a><ul>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskState.complete"><code class="docutils literal notranslate"><span class="pre">TaskState.complete</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskState.in_progress"><code class="docutils literal notranslate"><span class="pre">TaskState.in_progress</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.TaskState.todo"><code class="docutils literal notranslate"><span class="pre">TaskState.todo</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#todolyst.TodoLyst.add_category"><code class="docutils literal notranslate"><span class="pre">add_category()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-todolyst.TodolystExceptions">todolyst.TodolystExceptions module</a><ul>
+<li><a class="reference internal" href="#todolyst.TodolystExceptions.CategoryNotFoundException"><code class="docutils literal notranslate"><span class="pre">CategoryNotFoundException</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodolystExceptions.DuplicateTaskException"><code class="docutils literal notranslate"><span class="pre">DuplicateTaskException</span></code></a></li>
+<li><a class="reference internal" href="#todolyst.TodolystExceptions.TaskNotFoundException"><code class="docutils literal notranslate"><span class="pre">TaskNotFoundException</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-todolyst">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=10f1778b"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=32e29ea5"></script>
+    </body>
+</html>

@@ -16,7 +16,46 @@ Its goal is to show how Python code should be produced in production, showcasing
 
 A complete description of the assignement (in French) can be found at: https://ecampus.paris-saclay.fr/pluginfile.php/2624407/mod_resource/content/0/Projet%20_coder%20en%20Python%20pour%20la%20production.pdf
 
- ## Running tests
+## Quickstart
+
+This package follows a simple structure, you manipulate lists (TaskList) of tasks (_Task).
+
+### Create a new list
+```py
+mylist = TaskList()
+```
+
+### Add tasks
+```py
+mylist.add_task("first task","description for first task")
+# You can add a task in a particular category
+mylist.add_task("first task","description for first task",category="Work")
+```
+
+### Change task state
+```py
+mylist.begin_task("first task")
+mylist.complete("first_task")
+# You can change the state of several tasks at once
+mylist.complete("third_task","fourth_task")
+```
+
+### Display tasks
+```py
+mylist.display_tasks()
+# Display by categories
+mylist.display_tasks(category="Work")
+```
+
+### Add custom  category
+Default available categories are Default", "Work", "Personal". You can add a custom category using the following function.
+```py
+add_category("mycategory")
+```
+
+
+
+## Running tests
 
 ### Prerequisite
 In order to run tests, coverage and pytest are needed:
