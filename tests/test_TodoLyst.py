@@ -87,3 +87,13 @@ def test_complete_task():
             if task.title in test_title][0]
 
     assert task.state == TodoLyst.TaskState.complete
+
+def test_remove_task_by_title_raise_expt():
+    '''Checks that trying to remove a task not in task list raise exception'''
+    task_list = TodoLyst.TaskList()
+    task_list.add_task("title_01")
+    task_list.add_task("title_02")
+    task_list.add_task("title_03")
+
+    with pytest.raises(Exception):
+        task_list.remove_tasks_by_titles("title_01","title_02","title_03","title_04")
