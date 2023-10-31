@@ -11,6 +11,7 @@ Welcome to Todolyst's documentation!
    :caption: Contents:
 
    readme
+   modules
 
 
 
