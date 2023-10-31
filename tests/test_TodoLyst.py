@@ -52,3 +52,9 @@ def test_complete_task():
     task = [task for task in task_list.tasks if task.title in test_title][0]
 
     assert task.state == TodoLyst.TaskState.complete
+
+
+def test_display_task():
+    """Checks the tasks are displayed correctly"""
+    task_list = TodoLyst.TaskList()
+    task_list.display_tasks()
