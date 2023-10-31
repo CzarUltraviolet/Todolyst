@@ -35,16 +35,7 @@ html_static_path = ['_static']
 
 
 html_theme_options = {
-	"light_css_variables": {
-		"color-brand-primary": "black",
-		"color-brand-content": "black"
-	},
-	"dark_css_variables": {
-		"color-brand-primary": "white",
-		"color-brand-content": "white"
-	},
-	"light_logo": "Logo-Télécom-Paris-IP-Paris_light.png",
-	"dark_logo": "Logo-Télécom-Paris-IP-Paris_dark.png",
-	"sidebar_hide_name":True,
+    "logo": "Logo-Télécom-Paris-IP-Paris_light.png",
+    
 	
 }

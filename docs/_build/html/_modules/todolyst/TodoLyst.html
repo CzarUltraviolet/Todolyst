@@ -1,18 +1,15 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>todolyst.TodoLyst &#8212; Todolyst 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
@@ -76,10 +73,13 @@
 <span class="c1"># The states that can be taken by a task</span>
 
 
-<div class="viewcode-block" id="TaskState"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskState">[docs]</a><span class="k">class</span> <span class="nc">TaskState</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<div class="viewcode-block" id="TaskState">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskState">[docs]</a>
+<span class="k">class</span> <span class="nc">TaskState</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">todo</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="n">in_progress</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="n">complete</span> <span class="o">=</span> <span class="mi">2</span></div>
+
 
 
 <span class="c1"># Next Id to be used for a task creation</span>
@@ -88,8 +88,11 @@
 <span class="n">Categories</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s2">&quot;Default&quot;</span><span class="p">,</span> <span class="s2">&quot;Work&quot;</span><span class="p">,</span> <span class="s2">&quot;Personal&quot;</span><span class="p">])</span>
 
 
-<div class="viewcode-block" id="add_category"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.add_category">[docs]</a><span class="k">def</span> <span class="nf">add_category</span><span class="p">(</span><span class="n">category</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="add_category">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.add_category">[docs]</a>
+<span class="k">def</span> <span class="nf">add_category</span><span class="p">(</span><span class="n">category</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="n">Categories</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">category</span><span class="p">)</span></div>
+
 
 
 <span class="k">class</span> <span class="nc">_Task</span><span class="p">:</span>
@@ -108,7 +111,7 @@
     <span class="c1"># Create a new task, description can be null and other attributes are not managed by user</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="s2">&quot;Default&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new Task</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new Task</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            title (str): title of the task</span>
@@ -137,7 +140,7 @@
 
     <span class="c1"># Set task state</span>
     <span class="k">def</span> <span class="nf">set_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">new_state</span><span class="p">:</span> <span class="n">TaskState</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;set the state of the task</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set the state of the task</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            new_state (TaskState): new state</span>
@@ -146,7 +149,7 @@
 
     
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Show what the task should be displayed like</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Show what the task should be displayed like</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: str detailing all characteristics of the task</span>
@@ -155,15 +158,19 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;h&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Category : &quot;</span><span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
 
-<div class="viewcode-block" id="TaskList"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList">[docs]</a><span class="k">class</span> <span class="nc">TaskList</span><span class="p">:</span>
+<div class="viewcode-block" id="TaskList">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList">[docs]</a>
+<span class="k">class</span> <span class="nc">TaskList</span><span class="p">:</span>
     <span class="c1"># Container for the</span>
     <span class="n">tasks</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">_Task</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="p">{}</span>
 
-<div class="viewcode-block" id="TaskList.add_task"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.add_task">[docs]</a>    <span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Default&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Creates a new Task and adds it to the list</span>
+<div class="viewcode-block" id="TaskList.add_task">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.add_task">[docs]</a>
+    <span class="k">def</span> <span class="nf">add_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">description</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Default&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a new Task and adds it to the list</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            title (str): title of the new task</span>
@@ -180,8 +187,11 @@
         <span class="n">newTask</span> <span class="o">=</span> <span class="n">_Task</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">[</span><span class="n">newTask</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">newTask</span></div>
 
-<div class="viewcode-block" id="TaskList.remove_tasks_by_titles"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.remove_tasks_by_titles">[docs]</a>    <span class="k">def</span> <span class="nf">remove_tasks_by_titles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;removes all tasks by title</span>
+
+<div class="viewcode-block" id="TaskList.remove_tasks_by_titles">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.remove_tasks_by_titles">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_tasks_by_titles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;removes all tasks by title</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            titles (string[]): titles of the tasks to be removed</span>
@@ -195,8 +205,11 @@
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TaskList.remove_tasks_by_ids"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.remove_tasks_by_ids">[docs]</a>    <span class="k">def</span> <span class="nf">remove_tasks_by_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ids</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;removes all tasks by id</span>
+
+<div class="viewcode-block" id="TaskList.remove_tasks_by_ids">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.remove_tasks_by_ids">[docs]</a>
+    <span class="k">def</span> <span class="nf">remove_tasks_by_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ids</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;removes all tasks by id</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            TodolystExceptions.TaskNotFoundException: raised if a task can&#39;t be found in the current list</span>
@@ -209,23 +222,32 @@
         <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">ids_to_remove</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TaskList.begin_task"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.begin_task">[docs]</a>    <span class="k">def</span> <span class="nf">begin_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.in_progress</span>
+
+<div class="viewcode-block" id="TaskList.begin_task">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.begin_task">[docs]</a>
+    <span class="k">def</span> <span class="nf">begin_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.in_progress</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="n">task</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">TaskState</span><span class="o">.</span><span class="n">in_progress</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="TaskList.complete_task"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.complete_task">[docs]</a>    <span class="k">def</span> <span class="nf">complete_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.complete</span>
+
+<div class="viewcode-block" id="TaskList.complete_task">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.complete_task">[docs]</a>
+    <span class="k">def</span> <span class="nf">complete_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.complete</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="n">task</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">TaskState</span><span class="o">.</span><span class="n">complete</span><span class="p">)</span></div>
 
+
     <span class="c1"># Display taks from the list, can be filtered to display only a certain category</span>
-<div class="viewcode-block" id="TaskList.display_tasks"><a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.display_tasks">[docs]</a>    <span class="k">def</span> <span class="nf">display_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Displays all tasks in current list with the possibility to filter by category</span>
+<div class="viewcode-block" id="TaskList.display_tasks">
+<a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.display_tasks">[docs]</a>
+    <span class="k">def</span> <span class="nf">display_tasks</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Displays all tasks in current list with the possibility to filter by category</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            category (str, optional): If category is set, only tasks of this particular category will be shown. Defaults to None.</span>
@@ -246,7 +268,9 @@
             <span class="n">tasks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">task</span><span class="p">)</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------&quot;</span><span class="p">)</span></div></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------&quot;</span><span class="p">)</span></div>
+</div>
+
 
 
 <span class="sd">&#39;&#39;&#39;</span>
@@ -282,7 +306,12 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../../index.html">Todolyst</a></h1>
+<p class="logo">
+  <a href="../../index.html">
+    <img class="logo" src="../../_static/Logo-Télécom-Paris-IP-Paris_light.png" alt="Logo"/>
+    
+  </a>
+</p>
 
 
 
@@ -332,8 +361,8 @@
       &copy;2023, Frédéric_Lauron Pascal_Mahé Yannick_Letort Pierre_DLVM.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.0.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
       
     </div>
 
