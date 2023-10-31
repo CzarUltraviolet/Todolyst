@@ -38,3 +38,7 @@ jobs:
       run: |
         pip install pytest pytest-cov
         pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+    - name: Check docstring coverage
+      run: |
+        pip install docstr-coverage
+        docstr-coverage todolyst
