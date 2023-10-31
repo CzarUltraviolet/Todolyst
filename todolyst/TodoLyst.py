@@ -1,3 +1,9 @@
+"""TodoLyst module:
+Enum: TaskState
+Classes: _Task (for internal use only), TaskList - use this class to add/remove/complete tasks
+Functions: add_category (creates a category)
+"""
+
 from dataclasses import dataclass
 from enum import Enum
 import datetime
@@ -8,7 +14,6 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 from todolyst.TodolystExceptions import *
-
 
 # logger conf:
 # 2 timedrotatingfilehandlers: meaning we create 1 file per day and
@@ -39,10 +44,12 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(debug_file_handler)
 logger.addHandler(error_file_handler)
 
-# The states that can be taken by a task
-
 
 class TaskState(Enum):
+    """The states that can be taken by a task.
+    0: To do
+    1: in progress
+    2: complete"""
     todo = 0
     in_progress = 1
     complete = 2
@@ -55,12 +62,12 @@ Categories = set(["Default", "Work", "Personal"])
 
 
 def add_category(category: str):
+    """Adds a category to the set of Categories"""
     Categories.add(category)
 
 
 class _Task:
-    """Base classe for the module
-    """
+    """Internal class to keep track of tasks"""
     # Id : unique for each task, handled by the global variable _max_id
     id: int
     # Title : must be unique between the tasks of a same list
@@ -123,8 +130,14 @@ class _Task:
 
 
 class TaskList:
-    """Main class for the module, contains _Task
-    """
+    """Managers the tasks.
+    Allows to:
+        - add_task
+        - remove_tasks_by_titles
+        - remove_tasks_by_ids
+        - begin_task
+        - complete_task
+        - display_tasks"""
     tasks: Dict[int, _Task] = {}
 
     def __init__(self) -> None:
@@ -232,3 +245,5 @@ class TaskList:
         for task in tasks:
             print(task)
             print("--------")
+
+            
