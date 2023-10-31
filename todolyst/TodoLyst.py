@@ -8,7 +8,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 from todolyst.TodolystExceptions import *
- 
+
 
 # logger conf:
 # 2 timedrotatingfilehandlers: meaning we create 1 file per day and
@@ -59,6 +59,8 @@ def add_category(category: str):
 
 
 class _Task:
+    """Base classe for the module
+    """
     # Id : unique for each task, handled by the global variable _max_id
     id: int
     # Title : must be unique between the tasks of a same list
@@ -92,7 +94,7 @@ class _Task:
 
         if (category not in Categories):
             raise CategoryNotFoundException("The category you entered is not part of the available categories, here are the current categories : " +
-                            str(Categories)+". If you want to add a new category, use the AddCategory method")
+                                            str(Categories)+". If you want to add a new category, use the AddCategory method")
         Categories.add(category)
         self.category = category
 
@@ -110,22 +112,23 @@ class _Task:
         """
         self.state = new_state
 
-    
     def __str__(self):
         """Show what the task should be displayed like
 
         Returns:
             str: str detailing all characteristics of the task
         """
-        return "Task : " + str(self.id)+"\n"+"Title : " +self.title+"\n"+"Description : "+self.description+"\n"+"Created on : "+ str(self.creationdate.date())+ " at "  +str(
-            self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute)+"\n"+"Category : "+ self.category+"\n"
+        return "Task : " + str(self.id)+"\n"+"Title : " + self.title+"\n"+"Description : "+self.description+"\n"+"Created on : " + str(self.creationdate.date()) + " at " + str(
+            self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute)+"\n"+"Category : " + self.category+"\n"
 
 
 class TaskList:
-    # Container for the
+    """Main class for the module, contains _Task
+    """
     tasks: Dict[int, _Task] = {}
 
     def __init__(self) -> None:
+        logger.info("Creating task list.")
         self.tasks = {}
 
     def add_task(self, title: str, description: str = None, category: str = "Default"):
@@ -139,14 +142,19 @@ class TaskList:
         Raises:
             TodolystExceptions.DuplicateTaskException: raised if a similar task already exists
         """
+        logger.info("Adding task...")
         same_tasks = [task for task in self.tasks.values()
                       if task.title == title]
         if (len(same_tasks) > 0):
+            logger.error("Failed to add task")
             raise DuplicateTaskException()
         newTask = _Task(title, description=description, category=category)
         self.tasks[newTask.id] = newTask
+        logger.info("Successfully added task : " +
+                    newTask.title+" of id "+str(newTask.id))
 
     def remove_tasks_by_titles(self, *titles: str):
+        logger.info("Removing " + str(titles.count)+" task(s)...")
         """removes all tasks by title
 
         Args:
@@ -155,13 +163,16 @@ class TaskList:
         tasks = [task for task in self.tasks.values() if task.title in titles]
 
         if (len(tasks) < len(titles)):
-            raise TodolystExceptions.TaskNotFoundException(
+            logger.error("Failed to remove task.")
+            raise TaskNotFoundException(
                 "One or several ids of tasks to be removed do not correspond to ids from this list.")
-        
+
         for task in tasks:
             self.tasks.pop(task.id)
+        logger.info("Task(s) successfully removed.")
 
     def remove_tasks_by_ids(self, *ids: int):
+        logger.info("Removing " + str(ids.count)+" task(s)...")
         """removes all tasks by id
 
         Raises:
@@ -169,22 +180,28 @@ class TaskList:
         """
         ids_to_remove = [id for id in self.tasks.keys() if id in ids]
         if (len(ids_to_remove) < len(ids)):
+            logger.error("Failed to remove task.")
             raise TaskNotFoundException(
                 "One or several ids of tasks to be removed do not correspond to ids from this list.")
 
         for id in ids_to_remove:
             self.tasks.pop(id)
+        logger.info("Task(s) successfully removed.")
 
     def begin_task(self, *titles: str):
-        """Sets the state of the tasks to TaskState.in_progress
+        """Sets the state of the tasks to TaskState.in_progress. If a task is not found no exception is raised.
         """
+        logger.info("Beginning " + str(titles.count) + " task(s)")
+
         tasks = [task for task in self.tasks.values() if task.title in titles]
         for task in tasks:
             task.set_state(TaskState.in_progress)
 
     def complete_task(self, *titles: str):
-        """Sets the state of the tasks to TaskState.complete
+        """Sets the state of the tasks to TaskState.complete. If a task is not found, no exception is raised.
         """
+        logger.info("Completing " + str(titles.count) + " task(s)")
+
         tasks = [task for task in self.tasks.values() if task.title in titles]
         for task in tasks:
             task.set_state(TaskState.complete)
@@ -199,11 +216,13 @@ class TaskList:
         Raises:
             TodolystExceptions.CategoryNotFoundException: Is raised if a category is set but does not exist
         """
+        logger.info("Displaying "+str(len(self.tasks.values()))+" task(s).")
         print("Task list contains ", len(self.tasks), " elements.")
         print("--------")
 
         if (category):
             if (category not in Categories):
+                logger.error("Failed display using category : "+category+".")
                 raise CategoryNotFoundException(
                     "Tried to filter using a category that does not exist : "+category)
             tasks = [task for task in self.tasks.values()
@@ -213,30 +232,3 @@ class TaskList:
         for task in tasks:
             print(task)
             print("--------")
-
-
-'''
-logger.info("Starting tasklist...")
-testlist = TaskList()
-testlist.add_task("test", "description1", category="Work")
-testlist.add_task("test2", "description1", category="Personal")
-add_category("Fun")
-testlist.add_task("test3", "description1", category="Fun")
-testlist.add_task("test4", "description1", category="Fun")
-
-test_task = _Task("montest","description","Work")
-testlist.display_tasks()
-
-# testlist.remove_tasks_by_ids(0)
-testlist.complete_task("test")
-testlist.begin_task("test3")
-logger.info("Tasklist ended.")
-logger.error("Done.")
-print(test_task)
-testlist.display_tasks(category="Work")
-
-
-task_list_exceptions = TaskList()
-initial_length = len(task_list_exceptions.tasks)
-task_list_exceptions.add_task("Testtask02")
-'''
