@@ -69,13 +69,18 @@ add_category("mycategory")
 
 ### Prerequisite
 In order to run tests, coverage and pytest are needed:
+
 `pip install pytest`
+
 `pip install coverage`
 
+### Run
 To run tests, from the root of the project, run:
+
 `python3 -m coverage run -m pytest tests`
 
 To see the code coverage of the tests, run:
+
 `python3 -m coverage report`
 
 (See .coveragerc for the exact config of coverage)
