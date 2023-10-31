@@ -42,9 +42,54 @@ Pytest) and code coverage - documentation (with Sphinx) - a simple CI/CD
 pipeline (with Github Actions)</p>
 <p>A complete description of the assignement (in French) can be found at:
 <a class="reference external" href="https://ecampus.paris-saclay.fr/pluginfile.php/2624407/mod_resource/content/0/Projet%20_coder%20en%20Python%20pour%20la%20production.pdf">https://ecampus.paris-saclay.fr/pluginfile.php/2624407/mod_resource/content/0/Projet%20_coder%20en%20Python%20pour%20la%20production.pdf</a></p>
-<p>## Running tests</p>
+<section id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">¶</a></h2>
+<p>This package follows a simple structure, you manipulate lists (TaskList)
+of tasks (_Task).</p>
+<section id="create-a-new-list">
+<h3>Create a new list<a class="headerlink" href="#create-a-new-list" title="Link to this heading">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="n">TaskList</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="add-tasks">
+<h3>Add tasks<a class="headerlink" href="#add-tasks" title="Link to this heading">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="s2">&quot;first task&quot;</span><span class="p">,</span><span class="s2">&quot;description for first task&quot;</span><span class="p">)</span>
+<span class="c1"># You can add a task in a particular category</span>
+<span class="n">mylist</span><span class="o">.</span><span class="n">add_task</span><span class="p">(</span><span class="s2">&quot;first task&quot;</span><span class="p">,</span><span class="s2">&quot;description for first task&quot;</span><span class="p">,</span><span class="n">category</span><span class="o">=</span><span class="s2">&quot;Work&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="change-task-state">
+<h3>Change task state<a class="headerlink" href="#change-task-state" title="Link to this heading">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span><span class="o">.</span><span class="n">begin_task</span><span class="p">(</span><span class="s2">&quot;first task&quot;</span><span class="p">)</span>
+<span class="n">mylist</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="s2">&quot;first_task&quot;</span><span class="p">)</span>
+<span class="c1"># You can change the state of several tasks at once</span>
+<span class="n">mylist</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="s2">&quot;third_task&quot;</span><span class="p">,</span><span class="s2">&quot;fourth_task&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="display-tasks">
+<h3>Display tasks<a class="headerlink" href="#display-tasks" title="Link to this heading">¶</a></h3>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span><span class="o">.</span><span class="n">display_tasks</span><span class="p">()</span>
+<span class="c1"># Display by categories</span>
+<span class="n">mylist</span><span class="o">.</span><span class="n">display_tasks</span><span class="p">(</span><span class="n">category</span><span class="o">=</span><span class="s2">&quot;Work&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="add-custom-category">
+<h3>Add custom category<a class="headerlink" href="#add-custom-category" title="Link to this heading">¶</a></h3>
+<p>Default available categories are Default“,”Work“,”Personal”. You can add
+a custom category using the following function.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">add_category</span><span class="p">(</span><span class="s2">&quot;mycategory&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Link to this heading">¶</a></h2>
 <section id="prerequisite">
-<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">¶</a></h2>
+<h3>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">¶</a></h3>
 <p>In order to run tests, coverage and pytest are needed:
 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pytest</span></code> <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">coverage</span></code></p>
 <p>To run tests, from the root of the project, run:
@@ -52,6 +97,7 @@ pipeline (with Github Actions)</p>
 <p>To see the code coverage of the tests, run:
 <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">coverage</span> <span class="pre">report</span></code></p>
 <p>(See .coveragerc for the exact config of coverage)</p>
+</section>
 </section>
 </section>
 
@@ -75,7 +121,8 @@ pipeline (with Github Actions)</p>
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Evaluation project for BGDIA700</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisite">Prerequisite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-tests">Running tests</a></li>
 </ul>
 </li>
 </ul>
