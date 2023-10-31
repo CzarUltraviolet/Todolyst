@@ -45,7 +45,15 @@ pipeline (with Github Actions)</p>
 <section id="quickstart">
 <h2>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading">¶</a></h2>
 <p>This package follows a simple structure, you manipulate lists (TaskList)
-of tasks (_Task).</p>
+of tasks (_Task). First clone the package in a folder of your choice :
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:CzarUltraviolet/Todolyst.git</span></code> Then ensure
+you are currently using python 3.11 or higher. Install the package
+locally usuing <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">Todolyst</span></code>, or <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">.</span></code> while at
+the root of the project. You can then use the package simply with</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">todolyst.TodoLyst</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>for example.</p>
 <section id="create-a-new-list">
 <h3>Create a new list<a class="headerlink" href="#create-a-new-list" title="Link to this heading">¶</a></h3>
 <div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="n">mylist</span> <span class="o">=</span> <span class="n">TaskList</span><span class="p">()</span>
