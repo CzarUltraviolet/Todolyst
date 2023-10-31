@@ -22,7 +22,7 @@ This package follows a simple structure, you manipulate lists (TaskList) of task
 First clone the package in a folder of your choice : `git clone git@github.com:CzarUltraviolet/Todolyst.git`
 Then ensure you are currently using python 3.11 or higher.
 Install the package locally usuing `pip install Todolyst`, or `pip install .` while at the root of the project.
-You can then use the packge simply with 
+You can then use the package simply with 
 ```py
 from todolyst.TodoLyst import *
 
