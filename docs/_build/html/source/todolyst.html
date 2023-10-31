@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>todolyst package &#8212; Todolyst 0.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=039e1c02" />
+    <script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="todolyst-package">
+<h1>todolyst package<a class="headerlink" href="#todolyst-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-todolyst.TodoLyst">
+<span id="todolyst-todolyst-module"></span><h2>todolyst.TodoLyst module<a class="headerlink" href="#module-todolyst.TodoLyst" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodoLyst.</span></span><span class="sig-name descname"><span class="pre">TaskList</span></span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.add_task">
+<span class="sig-name descname"><span class="pre">add_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Default'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.add_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.add_task" title="Link to this definition">¶</a></dt>
+<dd><p>Creates a new Task and adds it to the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>title</strong> (<em>str</em>) – title of the new task</p></li>
+<li><p><strong>description</strong> (<em>str</em><em>, </em><em>optional</em>) – description of the new task. Defaults to None.</p></li>
+<li><p><strong>category</strong> (<em>str</em><em>, </em><em>optional</em>) – category of the new task. Defaults to “Default”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#todolyst.TodolystExceptions.DuplicateTaskException" title="todolyst.TodolystExceptions.DuplicateTaskException"><strong>TodolystExceptions.DuplicateTaskException</strong></a> – raised if a similar task already exists</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.begin_task">
+<span class="sig-name descname"><span class="pre">begin_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.begin_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.begin_task" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the state of the tasks to TaskState.in_progress</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.complete_task">
+<span class="sig-name descname"><span class="pre">complete_task</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.complete_task"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.complete_task" title="Link to this definition">¶</a></dt>
+<dd><p>Sets the state of the tasks to TaskState.complete</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.display_tasks">
+<span class="sig-name descname"><span class="pre">display_tasks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.display_tasks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.display_tasks" title="Link to this definition">¶</a></dt>
+<dd><p>Displays all tasks in current list with the possibility to filter by category</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>category</strong> (<em>str</em><em>, </em><em>optional</em>) – If category is set, only tasks of this particular category will be shown. Defaults to None.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#todolyst.TodolystExceptions.CategoryNotFoundException" title="todolyst.TodolystExceptions.CategoryNotFoundException"><strong>TodolystExceptions.CategoryNotFoundException</strong></a> – Is raised if a category is set but does not exist</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.remove_tasks_by_ids">
+<span class="sig-name descname"><span class="pre">remove_tasks_by_ids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.remove_tasks_by_ids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.remove_tasks_by_ids" title="Link to this definition">¶</a></dt>
+<dd><p>removes all tasks by id</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#todolyst.TodolystExceptions.TaskNotFoundException" title="todolyst.TodolystExceptions.TaskNotFoundException"><strong>TodolystExceptions.TaskNotFoundException</strong></a> – raised if a task can’t be found in the current list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.remove_tasks_by_titles">
+<span class="sig-name descname"><span class="pre">remove_tasks_by_titles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">titles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskList.remove_tasks_by_titles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskList.remove_tasks_by_titles" title="Link to this definition">¶</a></dt>
+<dd><p>removes all tasks by title</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>titles</strong> (<em>string</em><em>[</em><em>]</em>) – titles of the tasks to be removed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskList.tasks">
+<span class="sig-name descname"><span class="pre">tasks</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">_Task</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskList.tasks" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodoLyst.</span></span><span class="sig-name descname"><span class="pre">TaskState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#TaskState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.TaskState" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState.complete">
+<span class="sig-name descname"><span class="pre">complete</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskState.complete" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState.in_progress">
+<span class="sig-name descname"><span class="pre">in_progress</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskState.in_progress" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.TaskState.todo">
+<span class="sig-name descname"><span class="pre">todo</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#todolyst.TodoLyst.TaskState.todo" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="todolyst.TodoLyst.add_category">
+<span class="sig-prename descclassname"><span class="pre">todolyst.TodoLyst.</span></span><span class="sig-name descname"><span class="pre">add_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodoLyst.html#add_category"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodoLyst.add_category" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-todolyst.TodolystExceptions">
+<span id="todolyst-todolystexceptions-module"></span><h2>todolyst.TodolystExceptions module<a class="headerlink" href="#module-todolyst.TodolystExceptions" title="Link to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="todolyst.TodolystExceptions.CategoryNotFoundException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodolystExceptions.</span></span><span class="sig-name descname"><span class="pre">CategoryNotFoundException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodolystExceptions.html#CategoryNotFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodolystExceptions.CategoryNotFoundException" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="todolyst.TodolystExceptions.DuplicateTaskException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodolystExceptions.</span></span><span class="sig-name descname"><span class="pre">DuplicateTaskException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">&quot;Error,</span> <span class="pre">can't</span> <span class="pre">have</span> <span class="pre">two</span> <span class="pre">tasks</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">same</span> <span class="pre">title</span> <span class="pre">in</span> <span class="pre">a</span> <span class="pre">taskList.\n&quot;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodolystExceptions.html#DuplicateTaskException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodolystExceptions.DuplicateTaskException" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="todolyst.TodolystExceptions.TaskNotFoundException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">todolyst.TodolystExceptions.</span></span><span class="sig-name descname"><span class="pre">TaskNotFoundException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/todolyst/TodolystExceptions.html#TaskNotFoundException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#todolyst.TodolystExceptions.TaskNotFoundException" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-todolyst">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-todolyst" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="../index.html">
+    <img class="logo" src="../_static/Logo-Télécom-Paris-IP-Paris_light.png" alt="Logo"/>
+    
+  </a>
+</p>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Evaluation project for BGDIA700</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Frédéric_Lauron Pascal_Mahé Yannick_Letort Pierre_DLVM.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="../_sources/source/todolyst.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
