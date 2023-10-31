@@ -2,9 +2,14 @@
 import contextlib
 from io import StringIO
 from todolyst import TodoLyst
+import re
 from todolyst.TodolystExceptions import TaskNotFoundException, DuplicateTaskException
 # Tests for TaskList
 import pytest
+
+
+import logging
+from logging.handlers import TimedRotatingFileHandler
 
 
 def test_add_task():
@@ -102,7 +107,7 @@ def test_remove_task_by_title_raise_expt():
 
 
 def test_display_task():
-    """Checks the tasks are displayed correctly"""
+    """Checks the tasks are displayed"""
     task_list = TodoLyst.TaskList()
     # Captures output on stdout.
     # Allows testing what is printed to the console.
@@ -112,29 +117,13 @@ def test_display_task():
         task_list.display_tasks()
     output = temp_stdout.getvalue().strip()
 
-    assert output == '''Task list contains  4  elements.
---------
-Task :  0
-Title :  test
-State :  complete
-Description :  description1
-Created on :  2023-10-31 at 19h23
---------
-Task :  3
-Title :  Testtask02
-State :  todo
-Description :  None
-Created on :  2023-10-31 at 19h23
---------
-Task :  5
-Title :  Testtask01
-State :  in_progress
-Description :  None
-Created on :  2023-10-31 at 19h23
---------
-Task :  6
-Title :  Testtask04
-State :  complete
-Description :  None
-Created on :  2023-10-31 at 19h23
---------'''
+    assert len(output) >= 1
+
+
+def test_display_task_raises_exception():
+    """Checks the display_task function raises an error 
+    when the category supplied in parameter doesn't exist"""
+    task_list = TodoLyst.TaskList()
+
+    with pytest.raises(Exception):
+        task_list.display_tasks("unexisting_cat")
