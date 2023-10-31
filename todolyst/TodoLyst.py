@@ -167,12 +167,13 @@ class TaskList:
                     newTask.title+" of id "+str(newTask.id))
 
     def remove_tasks_by_titles(self, *titles: str):
-        logger.info("Removing " + str(titles.count)+" task(s)...")
         """removes all tasks by title
 
         Args:
             titles (string[]): titles of the tasks to be removed
         """
+        logger.info("Removing " + str(titles.count)+" task(s)...")
+
         tasks = [task for task in self.tasks.values() if task.title in titles]
 
         if (len(tasks) < len(titles)):
@@ -185,12 +186,12 @@ class TaskList:
         logger.info("Task(s) successfully removed.")
 
     def remove_tasks_by_ids(self, *ids: int):
-        logger.info("Removing " + str(ids.count)+" task(s)...")
         """removes all tasks by id
 
         Raises:
             TodolystExceptions.TaskNotFoundException: raised if a task can't be found in the current list
         """
+        logger.info("Removing " + str(ids.count)+" task(s)...")
         ids_to_remove = [id for id in self.tasks.keys() if id in ids]
         if (len(ids_to_remove) < len(ids)):
             logger.error("Failed to remove task.")
