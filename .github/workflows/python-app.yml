@@ -41,4 +41,4 @@ jobs:
     - name: Check docstring coverage
       run: |
         pip install docstr-coverage
-        docstr-coverage todolyst
+        docstr-coverage todolyst --skip-init

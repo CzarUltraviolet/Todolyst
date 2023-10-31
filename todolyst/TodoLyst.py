@@ -8,7 +8,6 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 
 from todolyst.TodolystExceptions import *
- 
 
 # logger conf:
 # 2 timedrotatingfilehandlers: meaning we create 1 file per day and
@@ -39,10 +38,12 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(debug_file_handler)
 logger.addHandler(error_file_handler)
 
-# The states that can be taken by a task
-
 
 class TaskState(Enum):
+    """The states that can be taken by a task.
+    0: To do
+    1: in progress
+    2: complete"""
     todo = 0
     in_progress = 1
     complete = 2
@@ -55,10 +56,12 @@ Categories = set(["Default", "Work", "Personal"])
 
 
 def add_category(category: str):
+    """Adds a category to the set of Categories"""
     Categories.add(category)
 
 
 class _Task:
+    """Internal class to keep track of tasks"""
     # Id : unique for each task, handled by the global variable _max_id
     id: int
     # Title : must be unique between the tasks of a same list
@@ -92,7 +95,7 @@ class _Task:
 
         if (category not in Categories):
             raise CategoryNotFoundException("The category you entered is not part of the available categories, here are the current categories : " +
-                            str(Categories)+". If you want to add a new category, use the AddCategory method")
+                                            str(Categories)+". If you want to add a new category, use the AddCategory method")
         Categories.add(category)
         self.category = category
 
@@ -110,19 +113,18 @@ class _Task:
         """
         self.state = new_state
 
-    
     def __str__(self):
         """Show what the task should be displayed like
 
         Returns:
             str: str detailing all characteristics of the task
         """
-        return "Task : " + str(self.id)+"\n"+"Title : " +self.title+"\n"+"Description : "+self.description+"\n"+"Created on : "+ str(self.creationdate.date())+ " at "  +str(
-            self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute)+"\n"+"Category : "+ self.category+"\n"
+        return "Task : " + str(self.id)+"\n"+"Title : " + self.title+"\n"+"Description : "+self.description+"\n"+"Created on : " + str(self.creationdate.date()) + " at " + str(
+            self.creationdate.time().hour)+"h"+str(self.creationdate.time().minute)+"\n"+"Category : " + self.category+"\n"
 
 
 class TaskList:
-    # Container for the
+    """Managers the tasks."""
     tasks: Dict[int, _Task] = {}
 
     def __init__(self) -> None:
@@ -157,7 +159,7 @@ class TaskList:
         if (len(tasks) < len(titles)):
             raise TodolystExceptions.TaskNotFoundException(
                 "One or several ids of tasks to be removed do not correspond to ids from this list.")
-        
+
         for task in tasks:
             self.tasks.pop(task.id)
 
