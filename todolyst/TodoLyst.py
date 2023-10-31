@@ -1,3 +1,9 @@
+"""TodoLyst module:
+Enum: TaskState
+Classes: _Task (for internal use only), TaskList - use this class to add/remove/complete tasks
+Functions: add_category (creates a category)
+"""
+
 from dataclasses import dataclass
 from enum import Enum
 import datetime
@@ -124,7 +130,14 @@ class _Task:
 
 
 class TaskList:
-    """Managers the tasks."""
+    """Managers the tasks.
+    Allows to:
+        - add_task
+        - remove_tasks_by_titles
+        - remove_tasks_by_ids
+        - begin_task
+        - complete_task
+        - display_tasks"""
     tasks: Dict[int, _Task] = {}
 
     def __init__(self) -> None:

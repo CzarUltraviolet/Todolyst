@@ -1,3 +1,4 @@
+"""Exceptions used by the TodoList module"""
 
 
 class DuplicateTaskException(Exception):
