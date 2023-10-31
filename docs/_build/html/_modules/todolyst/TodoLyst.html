@@ -39,7 +39,7 @@
 <span class="kn">from</span> <span class="nn">logging.handlers</span> <span class="kn">import</span> <span class="n">TimedRotatingFileHandler</span>
 
 <span class="kn">from</span> <span class="nn">todolyst.TodolystExceptions</span> <span class="kn">import</span> <span class="o">*</span>
- 
+
 
 <span class="c1"># logger conf:</span>
 <span class="c1"># 2 timedrotatingfilehandlers: meaning we create 1 file per day and</span>
@@ -96,6 +96,8 @@
 
 
 <span class="k">class</span> <span class="nc">_Task</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Base classe for the module</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Id : unique for each task, handled by the global variable _max_id</span>
     <span class="nb">id</span><span class="p">:</span> <span class="nb">int</span>
     <span class="c1"># Title : must be unique between the tasks of a same list</span>
@@ -129,7 +131,7 @@
 
         <span class="k">if</span> <span class="p">(</span><span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Categories</span><span class="p">):</span>
             <span class="k">raise</span> <span class="n">CategoryNotFoundException</span><span class="p">(</span><span class="s2">&quot;The category you entered is not part of the available categories, here are the current categories : &quot;</span> <span class="o">+</span>
-                            <span class="nb">str</span><span class="p">(</span><span class="n">Categories</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;. If you want to add a new category, use the AddCategory method&quot;</span><span class="p">)</span>
+                                            <span class="nb">str</span><span class="p">(</span><span class="n">Categories</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;. If you want to add a new category, use the AddCategory method&quot;</span><span class="p">)</span>
         <span class="n">Categories</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">category</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">category</span> <span class="o">=</span> <span class="n">category</span>
 
@@ -147,24 +149,25 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">new_state</span>
 
-    
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Show what the task should be displayed like</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            str: str detailing all characteristics of the task</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="s2">&quot;Task : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Title : &quot;</span> <span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Description : &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Created on : &quot;</span><span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">date</span><span class="p">())</span><span class="o">+</span> <span class="s2">&quot; at &quot;</span>  <span class="o">+</span><span class="nb">str</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;h&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Category : &quot;</span><span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Task : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Title : &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Description : &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Created on : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">date</span><span class="p">())</span> <span class="o">+</span> <span class="s2">&quot; at &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">.</span><span class="n">hour</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;h&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">creationdate</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">.</span><span class="n">minute</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;Category : &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">category</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
 
 <div class="viewcode-block" id="TaskList">
 <a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList">[docs]</a>
 <span class="k">class</span> <span class="nc">TaskList</span><span class="p">:</span>
-    <span class="c1"># Container for the</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main class for the module, contains _Task</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">tasks</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">_Task</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Creating task list.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span> <span class="o">=</span> <span class="p">{}</span>
 
 <div class="viewcode-block" id="TaskList.add_task">
@@ -180,17 +183,22 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            TodolystExceptions.DuplicateTaskException: raised if a similar task already exists</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Adding task...&quot;</span><span class="p">)</span>
         <span class="n">same_tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
                       <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="n">title</span><span class="p">]</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">same_tasks</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to add task&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">DuplicateTaskException</span><span class="p">()</span>
         <span class="n">newTask</span> <span class="o">=</span> <span class="n">_Task</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="n">description</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">category</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">[</span><span class="n">newTask</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">newTask</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">[</span><span class="n">newTask</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">newTask</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Successfully added task : &quot;</span> <span class="o">+</span>
+                    <span class="n">newTask</span><span class="o">.</span><span class="n">title</span><span class="o">+</span><span class="s2">&quot; of id &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">newTask</span><span class="o">.</span><span class="n">id</span><span class="p">))</span></div>
 
 
 <div class="viewcode-block" id="TaskList.remove_tasks_by_titles">
 <a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.remove_tasks_by_titles">[docs]</a>
     <span class="k">def</span> <span class="nf">remove_tasks_by_titles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removing &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">titles</span><span class="o">.</span><span class="n">count</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; task(s)...&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;removes all tasks by title</span>
 
 <span class="sd">        Args:</span>
@@ -199,16 +207,19 @@
         <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tasks</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">titles</span><span class="p">)):</span>
-            <span class="k">raise</span> <span class="n">TodolystExceptions</span><span class="o">.</span><span class="n">TaskNotFoundException</span><span class="p">(</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to remove task.&quot;</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">TaskNotFoundException</span><span class="p">(</span>
                 <span class="s2">&quot;One or several ids of tasks to be removed do not correspond to ids from this list.&quot;</span><span class="p">)</span>
-        
+
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">task</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Task(s) successfully removed.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TaskList.remove_tasks_by_ids">
 <a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.remove_tasks_by_ids">[docs]</a>
     <span class="k">def</span> <span class="nf">remove_tasks_by_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">ids</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Removing &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ids</span><span class="o">.</span><span class="n">count</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot; task(s)...&quot;</span><span class="p">)</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;removes all tasks by id</span>
 
 <span class="sd">        Raises:</span>
@@ -216,18 +227,22 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">ids_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="nb">id</span> <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">ids</span><span class="p">]</span>
         <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ids_to_remove</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">)):</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed to remove task.&quot;</span><span class="p">)</span>
             <span class="k">raise</span> <span class="n">TaskNotFoundException</span><span class="p">(</span>
                 <span class="s2">&quot;One or several ids of tasks to be removed do not correspond to ids from this list.&quot;</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">ids_to_remove</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Task(s) successfully removed.&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="TaskList.begin_task">
 <a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.begin_task">[docs]</a>
     <span class="k">def</span> <span class="nf">begin_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.in_progress</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.in_progress. If a task is not found no exception is raised.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Beginning &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">titles</span><span class="o">.</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; task(s)&quot;</span><span class="p">)</span>
+
         <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="n">task</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">TaskState</span><span class="o">.</span><span class="n">in_progress</span><span class="p">)</span></div>
@@ -236,8 +251,10 @@
 <div class="viewcode-block" id="TaskList.complete_task">
 <a class="viewcode-back" href="../../source/todolyst.html#todolyst.TodoLyst.TaskList.complete_task">[docs]</a>
     <span class="k">def</span> <span class="nf">complete_task</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">titles</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.complete</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the state of the tasks to TaskState.complete. If a task is not found, no exception is raised.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Completing &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">titles</span><span class="o">.</span><span class="n">count</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; task(s)&quot;</span><span class="p">)</span>
+
         <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">task</span><span class="o">.</span><span class="n">title</span> <span class="ow">in</span> <span class="n">titles</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="n">tasks</span><span class="p">:</span>
             <span class="n">task</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="n">TaskState</span><span class="o">.</span><span class="n">complete</span><span class="p">)</span></div>
@@ -255,11 +272,13 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            TodolystExceptions.CategoryNotFoundException: Is raised if a category is set but does not exist</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Displaying &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span><span class="o">+</span><span class="s2">&quot; task(s).&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Task list contains &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="p">),</span> <span class="s2">&quot; elements.&quot;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------&quot;</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="p">(</span><span class="n">category</span><span class="p">):</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">category</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Categories</span><span class="p">):</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Failed display using category : &quot;</span><span class="o">+</span><span class="n">category</span><span class="o">+</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
                 <span class="k">raise</span> <span class="n">CategoryNotFoundException</span><span class="p">(</span>
                     <span class="s2">&quot;Tried to filter using a category that does not exist : &quot;</span><span class="o">+</span><span class="n">category</span><span class="p">)</span>
             <span class="n">tasks</span> <span class="o">=</span> <span class="p">[</span><span class="n">task</span> <span class="k">for</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tasks</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
@@ -271,33 +290,6 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--------&quot;</span><span class="p">)</span></div>
 </div>
 
-
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">logger.info(&quot;Starting tasklist...&quot;)</span>
-<span class="sd">testlist = TaskList()</span>
-<span class="sd">testlist.add_task(&quot;test&quot;, &quot;description1&quot;, category=&quot;Work&quot;)</span>
-<span class="sd">testlist.add_task(&quot;test2&quot;, &quot;description1&quot;, category=&quot;Personal&quot;)</span>
-<span class="sd">add_category(&quot;Fun&quot;)</span>
-<span class="sd">testlist.add_task(&quot;test3&quot;, &quot;description1&quot;, category=&quot;Fun&quot;)</span>
-<span class="sd">testlist.add_task(&quot;test4&quot;, &quot;description1&quot;, category=&quot;Fun&quot;)</span>
-
-<span class="sd">test_task = _Task(&quot;montest&quot;,&quot;description&quot;,&quot;Work&quot;)</span>
-<span class="sd">testlist.display_tasks()</span>
-
-<span class="sd"># testlist.remove_tasks_by_ids(0)</span>
-<span class="sd">testlist.complete_task(&quot;test&quot;)</span>
-<span class="sd">testlist.begin_task(&quot;test3&quot;)</span>
-<span class="sd">logger.info(&quot;Tasklist ended.&quot;)</span>
-<span class="sd">logger.error(&quot;Done.&quot;)</span>
-<span class="sd">print(test_task)</span>
-<span class="sd">testlist.display_tasks(category=&quot;Work&quot;)</span>
-
-
-<span class="sd">task_list_exceptions = TaskList()</span>
-<span class="sd">initial_length = len(task_list_exceptions.tasks)</span>
-<span class="sd">task_list_exceptions.add_task(&quot;Testtask02&quot;)</span>
-<span class="sd">&#39;&#39;&#39;</span>
 </pre></div>
 
           </div>
