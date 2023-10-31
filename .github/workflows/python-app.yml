@@ -38,3 +38,7 @@ jobs:
       run: |
         pip install pytest pytest-cov
         pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=todolyst --cov-fail-under=90
+    - name: Check docstring coverage
+      run: |
+        pip install docstr-coverage
+        docstr-coverage todolyst --skip-init
