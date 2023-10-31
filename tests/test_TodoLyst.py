@@ -112,7 +112,6 @@ def test_display_task():
         task_list.display_tasks()
     output = temp_stdout.getvalue().strip()
 
-    print(output)
     assert output == '''Task list contains  4  elements.
 --------
 Task :  0
