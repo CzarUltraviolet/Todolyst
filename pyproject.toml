@@ -2,7 +2,7 @@
 name = "todolyst"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Frédéric Lauron <fred@example.com>","Pascal Mahé <pascal@example.com>","Yannick Letort <yannick@example.com>","Pierre DLVM <pierre@example.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -13,5 +13,4 @@ python = "^3.11"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.poetry.scripts]
-test = "pytest"
+
